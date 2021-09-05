@@ -1,4 +1,4 @@
-pipeLine{
+pipeline{
     //untuk define dimana mau dirun (slave)
     agent{
         node{
