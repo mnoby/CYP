@@ -6,11 +6,17 @@ pipeline{
         }
     }
 
+    parameters{
+        choice(name: 'RUN',choices: ['All', 'TAGS'], description: 'Run Test by')
+        string(name: 'TAGS', defaultValue: '', description: 'Tags to execute')
+    }
+
     //kumpulan task yang akan kita assign dijob tsb
     //Task: run automation test
     //1. clone source code, masuk kedalam project (bisa di skip karena jenkins sudah auto clone)
     //2. install depedencies
     //3. run all test
+    //3.a. run by tag
     //4. generate report
     stages{
         stage('intall dependencies'){
@@ -23,6 +29,13 @@ pipeline{
 
         stage('run all test'){
             steps{
+                script{
+                    if(params,RUN=='All'){
+                        sh "npm test"
+                    }else{
+                        sh "npm run cypress-tags -- run -e TAGS='${params,TAGS}'"
+                    }
+                }
                 sh "npm test"
             }
 
