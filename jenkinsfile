@@ -33,7 +33,7 @@ pipeline{
                     if(params,RUN=='All'){
                         sh "npm test"
                     }else{
-                        sh "npm run cypress-tags -- run -e TAGS='${params,TAGS}'"
+                        sh "npm run cypress-tags -- run -e TAGS='${params.TAGS}'"
                     }
                 }
                 sh "npm test"
