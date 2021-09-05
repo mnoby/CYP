@@ -1,0 +1,48 @@
+pipeLine{
+    //untuk define dimana mau dirun (slave)
+    agent{
+        node{
+            label 'docker-chrome'
+        }
+    }
+
+    //kumpulan task yang akan kita assign dijob tsb
+    //Task: run automation test
+    //1. clone source code, masuk kedalam project (bisa di skip karena jenkins sudah auto clone)
+    //2. install depedencies
+    //3. run all test
+    //4. generate report
+    stages{
+        stage('intall dependencies'){
+            steps{
+                //semua task operation bisa ditulis disini
+                sh "npm ci"
+            }
+
+        }
+
+        stage('run all test'){
+            steps{
+                sh "npm test"
+            }
+
+        }
+
+        stage('generate report'){
+            steps{
+                sh "npm run reporter"
+            }
+
+        }
+    }
+
+    //yang akan diexecute setelah semua staged
+    //always =>
+    //failed =>
+    //success =>
+    post{
+        always{
+            echo "ini adalah post{}"
+        }
+    }
+}
