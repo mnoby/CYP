@@ -13,12 +13,13 @@
   "license": "ISC",
   "devDependencies": {
     "cypress": "^8.3.1",
-    "cypress-cucumber-preprocessor": "^4.2.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
     "multiple-cucumber-html-reporter": "^1.18.0"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true,
-    "cucumberJson":{
+    "stepDefinitions": "cypress/integration",
+    "cucumberJson": {
       "generate": true,
       "outputFolder": "cypress/reports/cucumber-json",
       "fileprefix": "",

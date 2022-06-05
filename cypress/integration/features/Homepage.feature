@@ -3,7 +3,7 @@ Feature: BDD Atlas Homepage Color Quote
 I want to be able to submit quote in various Color
 
 @TC001 @BlueColor
-Scenario: I want to be able to submit a Blue Quote
+Scenario: I want to be able to submit a Blue Quotes
         Given I open BDD Atlas Web
         When I type a quote: Ayumu tenanan ora editan
         And I choose the Blue Color
@@ -23,5 +23,6 @@ Scenario Outline: Scenario Outline name: I want to be able to submit a <color> Q
             | White |
             | Yellow |
             | Cyan |
+        
 
-        #     lorem ipsum dolor sit amet
+       
